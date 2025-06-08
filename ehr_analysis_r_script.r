@@ -5,8 +5,8 @@
 # 
 # Analysis: Vermont EHR implementation data -> Montana predictions
 # Method: Hierarchical Bayesian modeling with MCMC estimation
-# Author: Healthcare Analytics Research Team
-# Date: 2025
+# Author: Jason Massey
+# Date: 4/18/2024
 
 # Load required libraries
 library(MCMCglmm)
