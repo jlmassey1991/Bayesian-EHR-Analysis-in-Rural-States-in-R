@@ -22,16 +22,16 @@ library(viridis)
 set.seed(42)
 
 # =============================================================================
-# 1. DATA SIMULATION (Based on realistic Vermont/Montana hospital data)
+# 1. Vermont/Montana hospital data)
 # =============================================================================
 
-# Vermont hospital data simulation
+# Vermont hospital data 
 n_hospitals_vt <- 24
 n_periods <- 6  # 6 periods: 3 pre-EHR, 3 post-EHR
 periods <- rep(1:n_periods, each = n_hospitals_vt)
 hospitals <- rep(1:n_hospitals_vt, n_periods)
 
-# Create realistic hospital characteristics
+# Create hospital characteristics
 hospital_chars <- data.frame(
   hospital_id = 1:n_hospitals_vt,
   hospital_name = paste("VT Rural Hospital", 1:n_hospitals_vt),
@@ -52,7 +52,7 @@ vermont_data <- expand.grid(
       TRUE ~ 2022 + period - 4
     ),
     ehr_implemented = ifelse(period > 3, 1, 0),
-    # Realistic discharge counts per period (6-month periods)
+    #  discharge counts per period (6-month periods)
     n_discharges = round(annual_discharges / 2 * rnorm(n(), 1, 0.1)),
     # Baseline logit rate with hospital-specific effects
     baseline_logit = -1.8 + baseline_risk + rnorm(n(), 0, 0.1),
@@ -66,7 +66,7 @@ vermont_data <- expand.grid(
     observed_rate = readmissions / n_discharges
   )
 
-# Montana baseline data simulation (current state, no EHR)
+# Montana baseline data (current state, no EHR)
 n_hospitals_mt <- 18
 montana_data <- data.frame(
   hospital_id = 1:n_hospitals_mt,
